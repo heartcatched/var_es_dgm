@@ -14,7 +14,11 @@ def estimate_var_es_torch(model, test_obs, alpha=0.05, n_samples=500, device="cp
             arr[i * batch : (i + 1) * batch] = (
                 model.forward(x.to(device)).flatten().detach().cpu()
             )
+            
     arr = arr.reshape(-1, 1)
+    
+    arr = arr.to(device, dtype=torch.float32) 
+    
     est = HistoricalSimulation(alpha=alpha)
 
     return est.predict(arr)
@@ -35,7 +39,11 @@ def estimate_var_es_torch_multivariate(
                 model.forward(x.to(device)).detach().cpu()
             )
 
-    arr = torch.tensor(scaler.inverse_transform(arr))
+    arr_unscaled = scaler.inverse_transform(arr)
+    arr = torch.tensor(arr_unscaled, dtype=torch.float32, device=device)
+    
+    R = R.to(device=device, dtype=torch.float32)
+
     est = HistoricalSimulation(alpha=alpha)
 
     return est.predict(arr, R=R)

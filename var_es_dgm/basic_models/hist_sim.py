@@ -86,7 +86,7 @@ class HistoricalSimulation:
             R = torch.corrcoef(context.T)
 
         # Computing final VaR and ES
-        VaR = -torch.sqrt(VaRs @ R @ VaRs.T)
+        VaR = -torch.sqrt(VaRs @ R.to(VaRs.device) @ VaRs.T)
         ES = torch.sum(ESs)
 
         return VaR, ES

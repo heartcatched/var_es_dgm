@@ -21,6 +21,7 @@ optuna = "^3.6.1"
 pandas = "^2.2.2"
 numpy = "^1.26.4"
 huggingface-hub = "^0.20.2"
+arch = "^7.0"
 
 
 [build-system]
