@@ -1,0 +1,86 @@
+{
+  "dimension": "univariate",
+  "alpha": 0.05,
+  "best_score": 0.45449577775412464,
+  "best_params": {
+    "num_train_timesteps": 100,
+    "beta_end": 0.11551975138330058,
+    "lr": 0.0034027248452905084,
+    "n_epochs": 44,
+    "dropout_rate": 0.18579777184178686
+  },
+  "best_metrics": {
+    "Kupicks POF": 0.45813554600441125,
+    "Haas TBF": 0.33575636141308846,
+    "Christoffersen Test": 0.4342889987006009,
+    "Acerbi Szekely 1": 1.8927162170410157,
+    "Acerbi Szekely 2": 0.007279536500573158
+  },
+  "tickers": [
+    [
+      "COST",
+      "CVX",
+      "HON",
+      "INTC",
+      "LLY",
+      "LOW",
+      "MDT",
+      "NKE",
+      "TJX",
+      "UNH"
+    ],
+    [
+      "AAPL",
+      "DUK",
+      "GOOGL",
+      "MDT",
+      "MMC",
+      "MO",
+      "PEP",
+      "PFE",
+      "UNP",
+      "WMT"
+    ],
+    [
+      "AMGN",
+      "C",
+      "CI",
+      "CRM",
+      "DIS",
+      "GOOGL",
+      "IBM",
+      "MCD",
+      "SYK",
+      "WFC"
+    ],
+    [
+      "AMGN",
+      "CMCSA",
+      "GOOGL",
+      "LOW",
+      "MCD",
+      "MSFT",
+      "SPGI",
+      "TJX",
+      "VRTX",
+      "WFC"
+    ],
+    [
+      "ABT",
+      "AMZN",
+      "C",
+      "CI",
+      "EOG",
+      "GOOGL",
+      "HD",
+      "ISRG",
+      "NEE",
+      "RTX"
+    ]
+  ],
+  "tune_cutoff": "2021-12-07",
+  "train_cutoff": "2022-06-01",
+  "val_days": 126,
+  "n_portfolios": 5,
+  "n_trials": 50
+}

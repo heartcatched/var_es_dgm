@@ -1,0 +1,27 @@
+{
+  "tickers": [
+    "AMGN",
+    "C",
+    "CI",
+    "CRM",
+    "DIS",
+    "GOOGL",
+    "IBM",
+    "MCD",
+    "SYK",
+    "WFC"
+  ],
+  "portfolio": "0.10*AMGN + 0.10*C + 0.10*CI + 0.10*CRM + 0.10*DIS + 0.10*GOOGL + 0.10*IBM + 0.10*MCD + 0.10*SYK + 0.10*WFC",
+  "seed": 14,
+  "metrics": {
+    "Kupicks POF": 0.029209100428164252,
+    "Haas TBF": 0.008132512645011615,
+    "Christoffersen Test": 0.44492022217351945,
+    "Acerbi Szekely 1": 1.9123902320861816,
+    "Acerbi Szekely 2": 0.007225655950605869
+  },
+  "repeat": 2,
+  "alpha": 0.05,
+  "dimension": "univariate",
+  "method": "deepvar"
+}

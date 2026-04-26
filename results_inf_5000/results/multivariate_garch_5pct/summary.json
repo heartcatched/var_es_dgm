@@ -1,0 +1,15 @@
+{
+  "dimension": "multivariate",
+  "method": "garch",
+  "alpha": 0.05,
+  "n_repeats": 5,
+  "portfolio_size": 10,
+  "seed": 12,
+  "summary_metrics": {
+    "Kupicks POF": 0.7234953618600191,
+    "Haas TBF": 0.37468601213979547,
+    "Christoffersen Test": 0.48915206125363475,
+    "Acerbi Szekely 1": 2.033779740333557,
+    "Acerbi Szekely 2": 0.005327191855758429
+  }
+}

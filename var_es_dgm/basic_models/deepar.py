@@ -42,10 +42,6 @@ class DeepAR(nn.Module):
             return StudentT(df=nu, loc=mu, scale=sigma)
 
     def forward(self, x, return_dist=False):
-        """
-        Если return_dist=True, возвращает объект распределения (нужно для обучения).
-        Если return_dist=False, сэмплирует случайное значение (нужно для функции estimate_var_es_torch).
-        """
         _, (h, c) = self.lstm(x)
         h_last = h[-1] 
         dist = self.get_distribution(h_last)

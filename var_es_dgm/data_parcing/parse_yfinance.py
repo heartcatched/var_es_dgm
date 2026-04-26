@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
     # Define start and end date (change as needed)
     start_date = "2005-01-01"
-    end_date = "2023-12-31"
+    end_date = "2026-03-12"
     # Download and save stock data
     parce_data(tickers, start_date, end_date, output_path=DATA_FOLDER + "stocks/")
     # Filter and save trading data from 2005

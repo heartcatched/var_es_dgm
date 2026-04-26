@@ -1,0 +1,15 @@
+{
+  "dimension": "multivariate",
+  "method": "deepvar",
+  "alpha": 0.01,
+  "n_repeats": 5,
+  "portfolio_size": 10,
+  "seed": 12,
+  "summary_metrics": {
+    "Kupicks POF": 0.83640996913329,
+    "Haas TBF": 0.39312030447354246,
+    "Christoffersen Test": 0.7283990748934646,
+    "Acerbi Szekely 1": 3.3278719425201415,
+    "Acerbi Szekely 2": 0.0003036258072825149
+  }
+}

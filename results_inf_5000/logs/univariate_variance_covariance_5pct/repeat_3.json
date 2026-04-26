@@ -1,0 +1,27 @@
+{
+  "tickers": [
+    "AMGN",
+    "CMCSA",
+    "GOOGL",
+    "LOW",
+    "MCD",
+    "MSFT",
+    "SPGI",
+    "TJX",
+    "VRTX",
+    "WFC"
+  ],
+  "portfolio": "0.10*AMGN + 0.10*CMCSA + 0.10*GOOGL + 0.10*LOW + 0.10*MCD + 0.10*MSFT + 0.10*SPGI + 0.10*TJX + 0.10*VRTX + 0.10*WFC",
+  "seed": 15,
+  "metrics": {
+    "Kupicks POF": 0.1558367527938385,
+    "Haas TBF": 0.07206946442687596,
+    "Christoffersen Test": 0.5538245895297551,
+    "Acerbi Szekely 1": 2.0519797801971436,
+    "Acerbi Szekely 2": 0.0036181004252284765
+  },
+  "repeat": 3,
+  "alpha": 0.05,
+  "dimension": "univariate",
+  "method": "variance_covariance"
+}

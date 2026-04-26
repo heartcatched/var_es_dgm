@@ -1,9 +1,12 @@
 [tool.poetry]
 name = "var-es-dgm"
 version = "0.1.0"
-description = ""
+description = "Deep Generative Models for VaR/ES Estimation"
 authors = ["ptrbelonovsky <p.belonovsky@gmail.com>"]
 readme = "README.md"
+packages = [
+    { include = "var_es_dgm" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -22,7 +25,10 @@ pandas = "^2.2.2"
 numpy = "^1.26.4"
 huggingface-hub = "^0.20.2"
 arch = "^7.0"
-
+# New dependencies for dgm_benchmark
+pytorch-lightning = "^2.2.0"
+wandb = "^0.16.0"
+pyyaml = "^6.0"
 
 [build-system]
 requires = ["poetry-core"]

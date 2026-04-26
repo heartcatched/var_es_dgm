@@ -1,0 +1,27 @@
+{
+  "tickers": [
+    "AAPL",
+    "DUK",
+    "GOOGL",
+    "MDT",
+    "MMC",
+    "MO",
+    "PEP",
+    "PFE",
+    "UNP",
+    "WMT"
+  ],
+  "portfolio": "0.10*AAPL + 0.10*DUK + 0.10*GOOGL + 0.10*MDT + 0.10*MMC + 0.10*MO + 0.10*PEP + 0.10*PFE + 0.10*UNP + 0.10*WMT",
+  "seed": 13,
+  "metrics": {
+    "Kupicks POF": 0.6091126130523119,
+    "Haas TBF": 0.4384902464940573,
+    "Christoffersen Test": 0.7472801345191533,
+    "Acerbi Szekely 1": 1.970711350440979,
+    "Acerbi Szekely 2": 0.00014892025501467288
+  },
+  "repeat": 1,
+  "alpha": 0.01,
+  "dimension": "univariate",
+  "method": "variance_covariance"
+}

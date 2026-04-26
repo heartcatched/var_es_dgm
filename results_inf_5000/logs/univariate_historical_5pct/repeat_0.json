@@ -1,0 +1,27 @@
+{
+  "tickers": [
+    "COST",
+    "CVX",
+    "HON",
+    "INTC",
+    "LLY",
+    "LOW",
+    "MDT",
+    "NKE",
+    "TJX",
+    "UNH"
+  ],
+  "portfolio": "0.10*COST + 0.10*CVX + 0.10*HON + 0.10*INTC + 0.10*LLY + 0.10*LOW + 0.10*MDT + 0.10*NKE + 0.10*TJX + 0.10*UNH",
+  "seed": 12,
+  "metrics": {
+    "Kupicks POF": 0.8437596597471722,
+    "Haas TBF": 0.7267581618606358,
+    "Christoffersen Test": 0.49165559765755296,
+    "Acerbi Szekely 1": 1.967426061630249,
+    "Acerbi Szekely 2": 0.0047079469077289104
+  },
+  "repeat": 0,
+  "alpha": 0.05,
+  "dimension": "univariate",
+  "method": "historical"
+}

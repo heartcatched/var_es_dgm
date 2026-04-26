@@ -23,40 +23,39 @@ class DeepVaR:
     def predict(self, context, weights=None, corr_matrix=None):
         self.model.eval()
         
-        # 1. Задаем дефолтные веса и корреляцию для Univariate случая
         if self.target_dim == 1:
             weights = torch.tensor([1.0], dtype=torch.float32, device=self.device)
             corr_matrix = torch.tensor([[1.0]], dtype=torch.float32, device=self.device)
         else:
             if weights is None or corr_matrix is None:
                 raise ValueError("Для Multivariate случая необходимо передать weights и corr_matrix")
-            weights = torch.tensor(weights, dtype=torch.float32, device=self.device)
-            corr_matrix = torch.tensor(corr_matrix, dtype=torch.float32, device=self.device)
+            if isinstance(weights, torch.Tensor):
+                weights = weights.detach().clone().to(dtype=torch.float32, device=self.device)
+            else:
+                weights = torch.tensor(weights, dtype=torch.float32, device=self.device)
+            if isinstance(corr_matrix, torch.Tensor):
+                corr_matrix = corr_matrix.detach().clone().to(dtype=torch.float32, device=self.device)
+            else:
+                corr_matrix = torch.tensor(corr_matrix, dtype=torch.float32, device=self.device)
 
         with torch.no_grad():
-            # 2. Сэмплирование (Algorithm 1, строка 17)
             samples_scaled = self.model.sample(context, n_samples=self.n_samples, prediction_length=1)
             
-            # Приводим к виду [n_samples, target_dim]
             if samples_scaled.dim() == 3:
                 samples_scaled = samples_scaled.squeeze(1)
             elif samples_scaled.dim() == 4:
                 samples_scaled = samples_scaled.squeeze(1).squeeze(1)
 
-        # 3. Управление масштабом
         if self.unscale_predictions and self.scaler is not None:
             samples_np = samples_scaled.cpu().numpy()
             samples_unscaled = self.scaler.inverse_transform(samples_np)
             samples = torch.tensor(samples_unscaled, dtype=torch.float32, device=self.device)
         else:
-            # Оставляем данные масштабированными (то, что нужно для вашего ноутбука)
             samples = samples_scaled.to(self.device)
 
-        # 4. Вычисляем квантили (Algorithm 1, строки 19-20)
-        lower_q = torch.quantile(samples, self.alpha, dim=0)       # [target_dim]
-        upper_q = torch.quantile(samples, 1 - self.alpha, dim=0)   # [target_dim]
+        lower_q = torch.quantile(samples, self.alpha, dim=0)       
+        upper_q = torch.quantile(samples, 1 - self.alpha, dim=0)   
 
-        # 5. Применяем веса позиций (Algorithm 1, строки 21-28)
         V = torch.zeros_like(weights)
         for i in range(self.target_dim):
             if weights[i] < 0:
@@ -64,14 +63,11 @@ class DeepVaR:
             else:
                 V[i] = weights[i] * lower_q[i]
 
-        # 6. Матричное вычисление VaR портфеля (Algorithm 1, строка 29)
-        V = V.unsqueeze(0) # [1, target_dim]
+        V = V.unsqueeze(0) 
         var_p_squared = torch.matmul(torch.matmul(V, corr_matrix), V.t())
         
-        # Берем со знаком минус, так как VaR традиционно отображается как отрицательное число
         VaR_p = -torch.sqrt(torch.abs(var_p_squared)).squeeze()
 
-        # 7. Эмпирический расчет Expected Shortfall (ES)
         simulated_portfolio_returns = torch.matmul(samples, weights)
         empirical_var = torch.quantile(simulated_portfolio_returns, self.alpha)
         

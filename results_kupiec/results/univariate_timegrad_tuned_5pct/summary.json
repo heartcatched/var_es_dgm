@@ -1,0 +1,15 @@
+{
+  "dimension": "univariate",
+  "method": "timegrad_tuned",
+  "alpha": 0.05,
+  "n_repeats": 5,
+  "portfolio_size": 10,
+  "seed": 12,
+  "summary_metrics": {
+    "Kupicks POF": 0.26970122134886965,
+    "Haas TBF": 0.4707165853398011,
+    "Christoffersen Test": 0.5173910495930691,
+    "Acerbi Szekely 1": 1.9300607919692994,
+    "Acerbi Szekely 2": 0.004589002905413508
+  }
+}
